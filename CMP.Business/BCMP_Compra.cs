@@ -14,13 +14,11 @@ namespace CMP.Business
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using ALM.Entity;
     using CMP.Entity;
     using ComputerSystems.DataAccess.LibrarySql;
     using SGC.Empresarial.Entity;
     using SGC.Empresarial.Useful.Modulo;
     using MNF.Entity;
-    using System.Linq;
 
     public class BCMP_Compra
     {
