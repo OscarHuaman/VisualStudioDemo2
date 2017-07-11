@@ -1,0 +1,19 @@
+﻿<Controls:MetroWindow x:Class="CMP.Presentation.OrdenServicio.PCMP_ShowListadoOrdenServicio"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:OrdeServicio="clr-namespace:CMP.Presentation.OrdenServicio"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      Title="Listado Orden Servicio" Height="450" Width="700"
+                      MinHeight="450" MinWidth="700"
+                      ShowIconOnTitleBar="True"
+                      NonActiveGlowBrush="Red"
+                      WindowState="Maximized"
+                      ContentRendered="MetroWindow_ContentRendered_1"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      ResizeMode="CanResizeWithGrip"
+                      WindowButtonCommandsOverlayBehavior="Never">
+
+    <Grid>
+        <OrdeServicio:PCMP_ListadoOrdenServicio x:Name="MyAdministrarListadoOrdenServicio" />
+    </Grid>
+</Controls:MetroWindow>

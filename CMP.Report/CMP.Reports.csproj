@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3374CC15-9D35-4642-A5FA-078ECB1E03F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMP.Reports</RootNamespace>
+    <AssemblyName>CMP.Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComputerSystems" />
+    <Reference Include="ComputerSystems.WPF">
+      <HintPath>..\bin\ComputerSystems.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\bin\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.Resources">
+      <HintPath>..\bin\MahApps.Metro.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SGC.Empresarial.Useful">
+      <HintPath>..\bin\SGC.Empresarial.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\bin\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TempArticuloListaPrecio\ViewReportData.xaml.cs">
+      <DependentUpon>ViewReportData.xaml</DependentUpon>
+    </Compile>
+    <Page Include="SendEmail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TempArticuloListaPrecio\ViewReportData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="MainRerport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainRerport.xaml.cs">
+      <DependentUpon>MainRerport.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SendEmail.xaml.cs">
+      <DependentUpon>SendEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Files\ReportAccounts.rdlc" />
+    <EmbeddedResource Include="Files\RptCompraHonorario.rdlc" />
+    <EmbeddedResource Include="Files\RptCompraProvision.rdlc" />
+    <EmbeddedResource Include="Files\RptCuentasPagar.rdlc" />
+    <EmbeddedResource Include="Files\RptGastosInternos.rdlc" />
+    <EmbeddedResource Include="Files\RptGeneralDocumentos.rdlc" />
+    <EmbeddedResource Include="Files\RptGeneralHonorario.rdlc" />
+    <EmbeddedResource Include="Files\RptListaPrecio.rdlc" />
+    <EmbeddedResource Include="Files\RptNotaCredito.rdlc" />
+    <EmbeddedResource Include="Files\RptOrdenCompra.rdlc" />
+    <EmbeddedResource Include="Files\RptOrdenServicio.rdlc" />
+    <EmbeddedResource Include="Files\RptResumenCuentasPagar.rdlc" />
+    <EmbeddedResource Include="Files\RptStockMinimo.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_Compra.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_CompraDetalle.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DataMartixReport.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DataTitleReport.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_FilterPropertyData.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenCompra.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenCompraDetalle.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenServicio.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenServicioDetalle.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMP.Business\CMP.Business.csproj">
+      <Project>{cccd4610-ae23-4c7c-b758-7b6a259931e6}</Project>
+      <Name>CMP.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Entity\CMP.Entity.csproj">
+      <Project>{3d17f275-565c-4e3f-9f6c-d9f07b163eac}</Project>
+      <Name>CMP.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Useful\CMP.Useful.csproj">
+      <Project>{c97db881-8e8b-4f19-9569-b5a001d2b172}</Project>
+      <Name>CMP.Useful</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

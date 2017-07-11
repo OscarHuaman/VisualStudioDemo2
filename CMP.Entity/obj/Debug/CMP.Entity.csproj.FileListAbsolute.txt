@@ -1,0 +1,5 @@
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\bin\CMP.Entity.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\bin\CMP.Entity.pdb
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Entity\obj\Debug\CMP.Entity.csprojResolveAssemblyReference.cache
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Entity\obj\Debug\CMP.Entity.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Entity\obj\Debug\CMP.Entity.pdb

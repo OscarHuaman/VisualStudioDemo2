@@ -1,0 +1,145 @@
+﻿<Page x:Class="CMP.ViewModels.ReporteGeneralHonorario.Page.PCMP_ListadoHonorario"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:CmpButton="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Buttons;assembly=ComputerSystems.WPF"
+      xmlns:TitleModule="clr-namespace:ComputerSystems.WPF.Acciones.TitleModule;assembly=ComputerSystems.WPF"
+      xmlns:CmpTextBox="clr-namespace:ComputerSystems.WPF.Acciones.Controles.TextBoxs;assembly=ComputerSystems.WPF"
+      xmlns:CmpPeriodo="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Period;assembly=ComputerSystems.WPF"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1500"
+	Title="Reporte General Docuemntos">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TitleModule:MyTitleModule Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"  NameModule="Compra" NameWindow="Reporte General de Honorarios" Logo="/CMP.ViewModels;component/Source/ima.png" />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Periodo" FontSize="10" Margin="5,0,5,0" />
+                <!--<ComboBox x:Name="cbxPeriodo" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          ItemsSource="{Binding DataContext.ListEMNF_Periodo, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedItem="{Binding DataContext.SelectPeriodo, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedValuePath="Periodo" DisplayMemberPath="Periodo"/>-->
+                <CmpPeriodo:CmpPeriod Margin="5,0,5,5" ItemsSource="{Binding DataContext.ListPeriodoCmpPeriodo,RelativeSource={RelativeSource FindAncestor,AncestorType=Page},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding DataContext.SelectPeriodoCmpPeriodo,RelativeSource={RelativeSource FindAncestor,AncestorType=Page}}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Opción" Margin="5,0,5,0" FontSize="10" />
+                <ComboBox x:Name="cbxOpcion"  Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          ItemsSource="{Binding DataContext.ListOpciones, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedItem="{Binding DataContext.SelectOpcion, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedValuePath="Value" DisplayMemberPath="Item"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Proveedor [Control + B]" Margin="5,0,5,0" FontSize="10" />
+                <TextBox x:Name="txtProvetedor" Margin="5,0,5,5" 
+                         Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                         CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RazonSocial, UpdateSourceTrigger=PropertyChanged}"                    
+                         Controls:TextBoxHelper.ButtonCommand="{Binding DataContext.IBuscarProveedor, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                         Controls:TextBoxHelper.ButtonCommandParameter="{Binding ElementName=txtProvetedor, Path=Text}">
+
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding DataContext.IBuscarProveedor, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}" CommandParameter="{Binding ElementName=txtProvetedor, Path=Text}" Key="B" Modifiers="Control"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <TextBlock Text="Moneda" Margin="5,0,5,0" FontSize="10" />
+                <ComboBox x:Name="cbxMoneda" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          ItemsSource="{Binding DataContext.ListESGC_Moneda, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedItem="{Binding DataContext.SelectMoneda, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}"
+                          SelectedValuePath="CodMoneda" DisplayMemberPath="Descripcion" />
+            </StackPanel>
+        </Grid>
+        <DataGrid x:Name="dtgListDocumentos" Grid.Column="0"  Grid.Row="2" Margin="5" Style="{StaticResource CmpStandarDataGrid}" ItemsSource="{Binding ListECMP_ReporteGrlHonorario}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fecha Emisión" Binding="{Binding FechaEmision, StringFormat=dd/MM/yyyy}" MinWidth="100" Width="100" IsReadOnly="True" />
+                <DataGridTextColumn Header="Fecha Contable" Binding="{Binding FechaContable, StringFormat=dd/MM/yyyy}" MinWidth="100" Width="100" IsReadOnly="True" />
+                <DataGridTextColumn Header="Documento" Binding="{Binding ObjESGC_Documento.Descripcion}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Serie - Número" Binding="{Binding SerieNumero}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding ObjEMNF_ClienteProveedor.RazonSocial}" MinWidth="150" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nro. Documento" Binding="{Binding ObjEMNF_ClienteProveedor.NroDocIdentidad}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Moneda" Binding="{Binding ObjESGC_Moneda.Descripcion}" MinWidth="50" Width="Auto" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Tipo Cambio" MinWidth="50" Width="Auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TipoCambio,StringFormat='#,###,###,###0.#000'}" TextAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Fecha Recepción" Binding="{Binding FechaRecepcion, StringFormat=dd/MM/yyyy}" MinWidth="120" Width="120" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Total Honorario" MinWidth="120" Width="Auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding THonorario,StringFormat='#,###,###,###0.#000'}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Porcentaje Retenido" MinWidth="120" Width="Auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PRetencion}" TextAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Monto Retenido" MinWidth="120" Width="Auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MRetencion,StringFormat='#,###,###,###0.#000'}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Total Neto" MinWidth="120" Width="Auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TotalNeto,StringFormat='#,###,###,###0.#000'}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Glosa" Binding="{Binding Glosa}" MinWidth="100" Width="100" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <CmpButton:CmpButtonTitleTeclaImprimir Grid.Row="0" Grid.Column="0" Margin="5"  IsCommand="{Binding IImprimir}"  />
+            <CmpButton:CmpButtonTitleTeclaExportarExcel Grid.Row="0" Grid.Column="1" Margin="5"  IsCommand="{Binding IExportar}"  />
+            <CmpButton:CmpButtonTitleTeclaSalir Grid.Row="0" Grid.Column="2" Margin="5" IsCommand="{Binding IClose}"  />
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5,0" FontSize="14" Text="{Binding Items.Count,ElementName=dtgListDocumentos}"  />
+            <TextBlock Grid.Column="1" FontSize="14" Text="Registros" Margin="0,0,248,0"/>
+        </Grid>
+    </Grid>
+</Page>

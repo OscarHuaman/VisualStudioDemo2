@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow x:Class="CMP.Presentation.OrdenCompra.PCMP_ShowAprobacionOrdenCompra"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                      xmlns:CmpButton="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Buttons;assembly=ComputerSystems.WPF"
+                      xmlns:TitleModule="clr-namespace:ComputerSystems.WPF.Acciones.TitleModule;assembly=ComputerSystems.WPF"
+                      xmlns:OrdeCompra="clr-namespace:CMP.Presentation.OrdenCompra"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="Aprobación Orden Compra" Height="450" Width="750"
+                      MinHeight="600" MinWidth="850"
+                      ShowIconOnTitleBar="True"
+                      NonActiveGlowBrush="Red"
+                      WindowState="Maximized"
+                      ContentRendered="MetroWindow_ContentRendered_1"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      ResizeMode="CanResizeWithGrip">
+    
+    <Grid>
+        <OrdeCompra:PCMP_AprobacionOrdenCompra x:Name="MyPCMP_AprobacionOrdenCompra"/>
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,506 @@
+﻿<UserControl x:Class="CMP.Presentation.Compra.PCMP_Compra"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:TitleModule="clr-namespace:ComputerSystems.WPF.Acciones.TitleModule;assembly=ComputerSystems.WPF"
+             xmlns:CmpButton="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Buttons;assembly=ComputerSystems.WPF"
+             xmlns:CmpTextBox="clr-namespace:ComputerSystems.WPF.Acciones.Controles.TextBoxs;assembly=ComputerSystems.WPF"
+             xmlns:CmpDataGrid="clr-namespace:ComputerSystems.WPF.Acciones.Controles.DataGrids;assembly=ComputerSystems.WPF"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d"
+             d:DesignHeight="610" d:DesignWidth="1200" >
+    
+    <Grid>
+        <Grid.Resources>
+            <CmpTextBox:ConvertTextBoxTrimSpaceInt x:Key="ConvertTextBoxTrimSpaceInt"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TitleModule:MyTitleModule Grid.Row="0" Grid.Column="0" Margin="5" Grid.ColumnSpan="2" NameModule="Cuentas Por Pagar" NameWindow="Provisión de Documentos" Logo="/CMP.Presentation;component/Source/ima.png" />
+        <Grid  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" x:Name="MyHeader">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.8*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+                <TextBlock Text="Sub-diario" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxSubDiario"  IsEnabled="False" 
+                          Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          SelectedValue="{Binding ObjEMNF_SubDiario.IdSubDiario, UpdateSourceTrigger=PropertyChanged}"
+                          ToolTip="Seleccione Sub Diario"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          DisplayMemberPath="SubDiario" SelectedValuePath="IdSubDiario" 
+                          SelectionChanged="cbxSubDiario_SelectionChanged_1"/>
+                <TextBlock Text="Operación movimiento" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox  x:Name="cbxOperacionMovimiento" 
+                           Grid.Row="0" Grid.Column="0" Margin="5,0,5,5"
+                           IsEditable="True" MaxDropDownHeight="125"
+                           Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                           SelectedValue="{Binding ObjEMNF_OperacionMovimiento.CodOpeMovimiento, UpdateSourceTrigger=PropertyChanged}"
+                           ToolTip="Seleccione Operación Movimiento"
+                           CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                           DisplayMemberPath="OpMovimiento" SelectedValuePath="CodOpeMovimiento" 
+                           SelectionChanged="cbxOperacionMovimiento_SelectionChanged_1"/>
+                <TextBlock Text="Motivo movimiento" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxMotivoMovimiento"  
+                          Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,5"
+                          IsEditable="False" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          SelectedValue="{Binding ObjEMNF_MotivoMovimiento.CodMotMovimiento, UpdateSourceTrigger=PropertyChanged}"
+                          ToolTip="Seleccione Motivo Movimiento" IsEnabled="False"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          DisplayMemberPath="MotMovimiento" SelectedValuePath="CodMotMovimiento" 
+                          SelectionChanged="cbxMotivoMovimiento_SelectionChanged_1"/>
+                <TextBlock Text="Proveedor [Control + B]" Margin="5,0,5,0" FontSize="10"/>
+                <TextBox x:Name="txtProveedorRazonSocial" Margin="5,0,5,5"  CharacterCasing="Upper"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}" 
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding ObjEMNF_ClienteProveedor.RazonSocial, UpdateSourceTrigger=PropertyChanged}"
+                         KeyDown="txtProveedorRazonSocial_KeyDown_1"
+                         ToolTip="Razón Social del Proveedor | Filtrar por [ Nro Documento | Razón Social | Contacto | Representante Legal ]"/>
+                <TextBlock Text="Forma pago" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxFormaPago" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          ToolTip="Seleccione F. Pago"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          SelectedValue="{Binding ObjESGC_FormaPago.IdFormaPago, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="FormaPago" SelectedValuePath="IdFormaPago" 
+                          SelectionChanged="cbxFormaPago_SelectionChanged_1"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0"  Grid.Column="1" >
+                <TextBlock Text="Periodo" Margin="5,0,5,0" FontSize="10" />
+                <ComboBox x:Name="cbxPeriodo" Margin="5,0,5,5"  
+                        SelectedValue="{Binding Periodo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                        DisplayMemberPath="Periodo" SelectedValuePath="Periodo" SelectionChanged="cbxPeriodo_SelectionChanged_1"/>
+                
+                <TextBlock Text="Fecha emisión" Margin="5,0,5,0" FontSize="10"/>
+                <DatePicker x:Name="dtpFechaOrden" Margin="5,0,5,5"
+                            Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                            SelectedDate="{Binding Fecha, UpdateSourceTrigger=PropertyChanged}" 
+                            CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                            SelectedDateChanged="dtpFechaOrden_SelectedDateChanged_1"
+                            ToolTip="Seleccione Fecha Emisión" 
+                            />
+                <TextBlock Text="Moneda" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxMoneda" 
+                          Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          ToolTip="Seleccione Moneda"
+                          DisplayMemberPath="Descripcion"  SelectedValuePath="CodMoneda" 
+                          SelectionChanged="cbxMoneda_SelectionChanged_1"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" >
+                <TextBlock Text="Estado" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxEstado"  
+                          Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,5"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          SelectedValue="{Binding ObjESGC_Estado.CodEstado, UpdateSourceTrigger=PropertyChanged}"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          ToolTip="Seleccione Estado" IsEnabled="False"
+                          DisplayMemberPath="Estado" SelectedValuePath="CodEstado" 
+                          SelectionChanged="cbxEstado_SelectionChanged_1"/>
+                <TextBlock Text="Fecha contable" Margin="5,0,5,0" FontSize="10"/>
+                <DatePicker x:Name="dtpFechaContable"  Margin="5,0,5,5"
+                            Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                            SelectedDate="{Binding FechaContable, UpdateSourceTrigger=PropertyChanged}"
+                            CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"                            
+                            ToolTip="Seleccione Fecha Contable" SelectedDateChanged="dtpFechaContable_SelectedDateChanged_1" />
+                <TextBlock Text="Tipo cambio" Margin="5,0,5,0" FontSize="10"/>
+                <Controls:NumericUpDown x:Name="txtSelRateTipoCambio" Margin="5,0,5,5" IsEnabled="False" 
+                                        Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                                        CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                                        Value="{Binding TipoCambio, UpdateSourceTrigger=PropertyChanged}" 
+                                        Interval="1" Minimum="0"  StringFormat="###,###,##0.#00" ToolTip="Ingrese Tipo Cambio" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="3">
+                <TextBlock x:Name ="lblDocReferencia" Text="[Automático] " TextWrapping="Wrap" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxDocReferencia" Margin="5,0,5,5" IsEnabled="False" 
+                          IsEditable="True" MaxDropDownHeight="125"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          SelectedValue="{Binding CodDocumentoRef, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Item" SelectedValuePath="Value"
+                          SelectionChanged="cbxDocReferencia_SelectionChanged_1"/>
+                <ComboBox x:Name="cbxEmpresaSucursal" Margin="5,0,5,5" Visibility="Collapsed"
+                              IsEditable="True" MaxDropDownHeight="125"
+                              Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                              ToolTip="Seleccione Sucursal"
+                              CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                              SelectedValue="{Binding ObjESGC_EmpresaSucursal.IdEmpSucursal, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="ObjESGC_EmpresaSucursal.Sucursal" SelectedValuePath="ObjESGC_EmpresaSucursal.IdEmpSucursal"
+                              SelectionChanged="cbxEmpresaSucursal_SelectionChanged_1"/>
+                                
+                <Grid x:Name="GridGuiaRemision" Visibility="Visible">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Guía Remisión" Margin="5,0,5,0" FontSize="10"/>
+                    <TextBox x:Name="txtGuiaRemision" Grid.Row="1" Grid.Column="0" Margin="5,0,5,5"  CharacterCasing="Upper" IsEnabled="False"
+                             CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                             Text="{Binding GuiaRemision, UpdateSourceTrigger=PropertyChanged}"
+                             ToolTip="Guía Remisión"/>
+                </Grid>
+                <Grid x:Name="GridDocReferencias">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Nro Documento Referencia [Control + B]" TextWrapping="Wrap" Margin="5,0,5,0" FontSize="10"/>
+                    <TextBox x:Name="txtDocumentoRef"  Margin="5,0,5,5"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                             Text="{Binding NumeroRef, UpdateSourceTrigger=PropertyChanged}"
+                             KeyDown="txtDocumentoRef_KeyDown_1" CharacterCasing="Upper"
+                             ToolTip="Nro Documento Referencia"/>
+                    </StackPanel>
+                    <StackPanel x:Name="stpAnticipo" Grid.Row="0"  Grid.Column="1">
+                        <TextBlock Text="Anticipo" TextWrapping="Wrap" Margin="5,0,5,0" FontSize="10"/>
+                        <Button x:Name="btnAnticipo" Style="{StaticResource CmpDataViewButtonObservado01}" ToolTip="Observación del Servicio" Click="btnAnticipo_Click_1" Margin="5,0,5,0"/>
+                    </StackPanel>
+                    <DataGrid x:Name="dgReferencias" Grid.Row="1" Grid.ColumnSpan="2"  Margin="5,13,5,5" FontSize="11" Height="70" Style="{DynamicResource CmpStandarDataGrid}" VerticalAlignment="Bottom">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn x:Name="dtgDetalleColumnEliminar" MinWidth="20" Width="20" Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="dtgDetalleColumnEliminar" Style="{StaticResource CmpDataViewButtonEliminar03}" Height="15" Width="15" ToolTip="Eliminar" Click="dtgDetalleColumnEliminar_Click_1" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Serie - Número" Binding="{Binding SerieNumero}" MinWidth="100" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn x:Name="dtgDetalleColumnGuiaRemision" Header="Guía Remision" Binding="{Binding GuiaRemision}" MinWidth="105" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                </Grid>
+                <CheckBox x:Name="chkPlanilla" Content="Planilla, Ingreso de Montos Totales a Distribuir" Margin="5" Visibility="Collapsed" Click="chkPlanilla_Checked_1"/>
+            </StackPanel>
+
+            <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="105*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="44" />
+                    <RowDefinition Height="Auto" MinHeight="131" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TextBlock Text="Documento" Margin="5,0,5,0" FontSize="10"/>
+                    <ComboBox  x:Name="cbxDocumento"  
+                               Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,5"
+                               IsEditable="True" MaxDropDownHeight="125"
+                               CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                               Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                               SelectedValue="{Binding CodDocumento, UpdateSourceTrigger=PropertyChanged}" 
+                               ToolTip="Seleccione Documento" IsEnabled="False" SelectionChanged="cbxDocumento_SelectionChanged_1"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="1" >
+                    <TextBlock Text="Serie" Margin="5,0,5,0" FontSize="10"/>
+                    <TextBox x:Name="txtSerie" Margin="5,0,5,5"
+                             CmpTextBox:CmpMaskBehavior.Mask="Any" MaxLength="4"
+                             Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                             Text="{Binding Serie, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ConvertTextBoxTrimSpaceInt}}"
+                             KeyDown="txtSerie_KeyDown_1" LostFocus="txtSerie_LostFocus_1"
+                             ToolTip="Serie"/>
+                </StackPanel>
+
+                <StackPanel  Grid.Column="1" Grid.Row="1">
+                    <TextBlock Text="Número" Margin="5,0,5,0" FontSize="10"/>
+                    <TextBox x:Name="txtCorrelativo" Margin="5,0,5,5" 
+                             CmpTextBox:CmpMaskBehavior.Mask="Any" MaxLength="10"
+                             Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                             Text="{Binding Numero, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ConvertTextBoxTrimSpaceInt}}"
+                             KeyDown="txtCorrelativo_KeyDown_1"
+                             ToolTip="Nro Documento"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="chkAfectoDetraccion" IsChecked="{Binding AfectoDetraccion,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                              Content="Afecto a detracción" Margin="5" Click="chkAfectoDetraccionClick"  />
+                    <Grid     IsEnabled="{Binding ElementName=chkAfectoDetraccion, Path=IsChecked}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Tasa [%]" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                        <TextBox Name="txtDetraccion" Grid.Row="0" Grid.Column="1" Margin="5,0,5,5"  Text="{Binding Detraccion, UpdateSourceTrigger=PropertyChanged,StringFormat='##0.#00'}"
+                                 CmpTextBox:CmpMaskBehaviorMVVM.Mask="Decimal"/>
+                       
+                        
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="chkAfectoAlmacen" Grid.Column="0" IsChecked="{Binding AfectoAlmacen,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                              Content="Almacén" Margin="5" Click="chkAfectoAlmacenClick" />
+                        <CheckBox x:Name="chkDistribucion" Grid.Column="1" IsChecked="{Binding Distribucion,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                              Content="Distribuir" Margin="0,5" Click="chkAfectoAlmacenClick" />
+                    </Grid>
+                    
+                    <TextBlock x:Name="lblTipoDestino"  Text="Tipo Destino" Margin="5,0,0,0" FontSize="10"/>
+                    <ComboBox x:Name="cbxTipoDestino"  
+                            Grid.Row="2" Grid.Column="1" Margin="5,0"
+                            IsEditable="True" MaxDropDownHeight="125"
+                            CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                            Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                            SelectedValue="{Binding ObjTipoDestino.Value, UpdateSourceTrigger=PropertyChanged}"
+                            ToolTip="Seleccione Tipo Destino"
+                            DisplayMemberPath="TipoDestino" SelectedValuePath="CodTipoDestino"
+                            SelectionChanged="cbxTipoDestino_SelectionChanged_1"/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock Text="Glosa" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" FontSize="10"/>
+                <TextBox x:Name="txtObservacion" Grid.Row="1" Grid.Column="0" Height="70" TextWrapping="Wrap" AcceptsReturn="True"
+                          CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                         Text="{Binding Glosa, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="5,0,5,5"  CharacterCasing="Upper"
+                         ToolTip="Ingrese Glosa"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="DetailArticulo" Grid.Column="0" Grid.Row="2" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <CmpButton:CmpButtonTitleTeclaAddItem x:Name="btnAgregarArtServ" Margin="5" IsEnabled="False" ContentTitle="Agregar Artículo" IsClicked="btnAgregarItemsIsClicked"/>
+                    <CmpButton:CmpButtonTitleTeclaImprimir x:Name="btnImprimirArtServ" Margin="5" IsEnabled="False" IsClicked="btnImprimirIsClicked"/>
+                    <CmpButton:CmpButtonTitleTeclaSalir x:Name="btnSalirArtServ" Margin="5" IsClicked="btnSalirIsClicked"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <CmpButton:CmpButtonTitleTeclaDeleteItem x:Name="btnQuitarArtServ" Margin="5" ContentTitle="Quitar Artículo" IsEnabled="False" IsClicked="btnQuitarItemsIsClicked"/>
+                    <CmpButton:CmpButtonTitleTeclaGuardar x:Name="btnGuardarArtServ" Margin="5" IsEnabled="False" IsClicked="btnGuardarIsClicked"/>
+                </StackPanel>
+            </Grid>
+
+            
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="dgCompraDetalle" Grid.Column="1"  Grid.Row="0" Margin="5" Style="{DynamicResource CmpStandarDataGrid}" 
+                          SelectionUnit="Cell"
+                          CmpDataGrid:CmpGridViewFocus.IsMoveFocus="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" MinWidth="50" Width="50" IsReadOnly="True"/>
+                        <DataGridTextColumn x:Name="dgColumnSerieNum" Header="Serie - Número" Binding="{Binding SerieNumero}" MinWidth="120" Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" MinWidth="100" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Artículo / Servicio" Binding="{Binding ArticuloServicio}" MinWidth="250" Width="250" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Unidad" Binding="{Binding CodUndMedida}" MinWidth="100" Width="100" IsReadOnly="True"/>
+                        <DataGridTemplateColumn x:Name="dgColumnAlmacen" Header="Almacén" MinWidth="250" Width="250">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="cbxAlmacen" SelectedValue="{Binding ObjEALM_Almacen.IdAlmacen, UpdateSourceTrigger=PropertyChanged}" 
+                                              IsEnabled="{Binding IsEnabledColumnAlmcen}"
+                                              SelectedItem="{Binding ObjEALM_Almacen, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedValuePath="IdAlmacen" DisplayMemberPath="Almacen" ItemsSource="{Binding ListEALM_Almacen}"
+                                              Controls:TextBoxHelper.Watermark="Seleccione Almacén"
+                                              ToolTip="Seleccione Almacén"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="dgDetalleArtServColumnCantidad" Header="Cantidad" MinWidth="160" Width="160">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="npdCantidadArtServ"
+                                             Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged, StringFormat='###,###,##0.#0000000'}"
+                                             CmpTextBox:CmpMaskBehavior.Mask="Decimal"
+                                             CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                                             TextAlignment="Right"
+                                             IsEnabled="{Binding IsEnabledColumnPrecioUnitario, UpdateSourceTrigger=PropertyChanged}"
+                                             LostFocus="CalnpdPrecioUnitarioArtServ" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="dgPrecioUnitario" Header="Precio Unitario" MinWidth="160" Width="160">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="npdCantidadArtServ"
+                                             Text="{Binding PrecioUnitario, UpdateSourceTrigger=PropertyChanged, StringFormat='###,###,##0.#0000000'}"
+                                             CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                                             CmpTextBox:CmpMaskBehavior.Mask="Decimal"
+                                             TextAlignment="Right"
+                                             IsEnabled="{Binding IsEnabledColumnPrecioUnitario, UpdateSourceTrigger=PropertyChanged}"
+                                             LostFocus="CalnpdPrecioUnitarioArtServ" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+						<DataGridTemplateColumn x:Name="dgImporte" Header="Importe" MinWidth="150" Width="Auto" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Importe, StringFormat='###,###,##0.#0000000'}" TextAlignment="Right" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="dgIGV" Header="IGV" MinWidth="150" Width="Auto" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ImporteIGV, StringFormat='###,###,##0.#0000000'}" TextAlignment="Right" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="dtgColumnaTipoDestino" MinWidth="40" Header="" Visibility="Collapsed">
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding ListCentroCosto}"
+                                            SelectedValue="{Binding IdDestino, UpdateSourceTrigger=PropertyChanged}"
+                                            ToolTip="Seleccione Tipo Destino"
+                                            DisplayMemberPath="Item" SelectedValuePath="Value" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="dtgColumnaPeriodoCompania" MinWidth="40" Header="Periodo Campaña">
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <ComboBox x:Name="cbxPeriodoCampaña" ItemsSource="{Binding ListPeriodoCampania}"
+                                              SelectedValue="{Binding PeriodoCampania, UpdateSourceTrigger=PropertyChanged}"
+                                              Controls:TextBoxHelper.Watermark="Selec. Periodo Campaña"
+                                              ToolTip="Seleccione Periodo Campaña"
+                                              DisplayMemberPath="Item" SelectedValuePath="Value" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Height="60">
+                    <CheckBox x:Name="chkCajaBanco" Margin="0,5" Grid.Column="0" Content="Caja y Banco" VerticalAlignment="Top" /> <!--Click="chkCajaBanco_Click_1"-->
+                </Grid>
+                
+                <Grid Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="Right" Height="60">
+                    <Grid.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <Border Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            Background="{TemplateBinding Background}"
+                                            SnapsToDevicePixels="true">
+                                            <ScrollViewer Name="PART_ContentHost" Background="{TemplateBinding Background}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Value="Black" Property="Background"/>
+                                                <Setter Value="White" Property="Foreground"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="True">
+                                                <Setter Value="Black" Property="Background"/>
+                                                <Setter Value="White" Property="Foreground"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <CheckBox x:Name="chkAnticipo" Margin="0,5,10,5" Grid.Column="0" Content="Anticipo" VerticalAlignment="Center" HorizontalAlignment="Left" Click="chkAnticipo_Click_1"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <CheckBox x:Name="chkIncluyeIGV" Margin="5" Grid.Column="0" Content="Precio Incluye IGV" VerticalAlignment="Center" HorizontalAlignment="Center" Click="IsClickCheckBox"
+                              IsChecked="{Binding IncluyeIGV, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                        <CheckBox x:Name="chkAfectoPercepcion" Margin="5" Grid.Column="0" Content="Afecto percepción" VerticalAlignment="Center" HorizontalAlignment="Center" Click="IsClickCheckBox"/>
+                        <CheckBox x:Name="chkRetencion" Margin="5" Grid.Column="0"  Content="Retención" VerticalAlignment="Center" HorizontalAlignment="Left" Click="chkRetencion_Click_1"/>
+                    </StackPanel>
+                    <StackPanel Background="Black" Margin="5" Grid.Column="2" >
+                        <TextBlock x:Name="lblTitleCompra01" Text="# Líneas" Margin="3" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBox Text="0" x:Name="txtLineasArtServ" Foreground="White" Margin="0" FontWeight="Bold" FontSize="15" TextAlignment="Center" BorderThickness="0,1,0,0" Background="Black" IsReadOnly="True"/>
+                    </StackPanel>
+                    <StackPanel x:Name="ColumnCal01" Visibility="Visible" Background="Black" Margin="5" Grid.Column="3" Width="110" >
+                        <TextBlock x:Name="lblTitleCompra02" Text="Exonerado" Margin="3" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBox x:Name="txtExoneradoArtServ" Text="0.00" Foreground="White" Margin="0" FontWeight="Bold" FontSize="15" Background="Black"  BorderThickness="0,1,0,0"
+								 CmpTextBox:CmpMaskBehavior.Mask="Decimal" CmpTextBox:CmpMaskBehavior.MaximumDecimalNumber="2"
+                                 KeyUp="txtExoneradoArtServ_KeyUp_1" TextAlignment="Right"/>
+                    </StackPanel>
+                    <StackPanel Background="Black" Margin="5" Grid.Column="4" Width="110" >
+                        <TextBlock x:Name="lblTitleCompra03" Text="Gravada" Margin="3" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBox x:Name="txtGravadaArtServ" Text="0.00" Foreground="White" Margin="0" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"
+                             HorizontalAlignment="Right" Background="Black"  BorderThickness="0" TextAlignment="Right"
+                             IsReadOnly="True"
+                             KeyDown="CalCularKeyEnter"
+                             PreviewMouseDoubleClick="CalCularPreviewMouseDown"
+                             LostFocus="txtGravada_LostFocus_1"
+                             />
+                    </StackPanel>
+                    <StackPanel Background="Black" Margin="5" Grid.Column="5" Width="110" >
+                        <TextBlock x:Name="lblTitleCompra04" Text="IGV 18%" Margin="3" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBox x:Name="txtTotalIgvArtServ" Text="0.00" Foreground="White" Margin="0" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"
+                             HorizontalAlignment="Right" Background="Black"  BorderThickness="0" TextAlignment="Right"
+                             IsReadOnly="True"
+                             KeyDown="CalCularKeyEnter"
+                             PreviewMouseDoubleClick="CalCularPreviewMouseDown"
+                             LostFocus="txtGravada_LostFocus_1"
+                             />
+                    </StackPanel>
+                    <StackPanel Background="Black" Margin="5" Grid.Column="6" Width="110" >
+                        <TextBlock x:Name="lblTitleCompra05" Text="Total " Margin="3" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBox x:Name="txtTotalNetoArtServ" Text="0.00"  Foreground="White" Margin="0" FontWeight="Bold" FontSize="15" Background="Black" BorderThickness="0,1,0,0" TextAlignment="Right" IsReadOnly="True"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

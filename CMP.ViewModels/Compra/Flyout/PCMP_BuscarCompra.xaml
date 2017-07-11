@@ -1,0 +1,173 @@
+﻿<controls:Flyout x:Class="CMP.ViewModels.Compra.Flyouts.PCMP_BuscarCompra"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:CmpButton="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Buttons;assembly=ComputerSystems.WPF"
+                 xmlns:CmpControl="clr-namespace:ComputerSystems.WPF.Acciones.Controles;assembly=ComputerSystems.WPF"
+                 xmlns:CmpTextBox="clr-namespace:ComputerSystems.WPF.Acciones.Controles.TextBoxs;assembly=ComputerSystems.WPF"
+                 xmlns:CmpConverts="clr-namespace:CMP.ViewModels.Converts"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 mc:Ignorable="d"
+                 d:DesignHeight="700"
+                 d:DesignWidth="600"
+                 Width="600"
+                 IsModal="True"
+                 Theme="Light"
+                 IsOpen="{Binding IsOpenFlyout}"
+                 Header="Buscar Documento"
+                 Position="Right">
+
+    <Grid Margin="5">
+        <Grid.Resources>
+            <CmpConverts:ConvertToVisibilityColumns x:Key="ConvertToVisibilityColumns" />
+            <FrameworkElement x:Key="ProxyElement" DataContext="{Binding}"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl Visibility="Collapsed" Content="{StaticResource ProxyElement}"/>
+        <CmpControl:DataGrid x:Name="dtgCompra"
+                             CmpSelectedCellsChanged="{Binding ICalcular, UpdateSourceTrigger= PropertyChanged}"
+                             CmpMouseDoubleClick="{Binding IAddItemSelection}" 
+                             CmpSelectedItems="{Binding MultiSelectionItem}"
+                             SelectedItem="{Binding SelectedItem}"
+                             Grid.Row="1" MinHeight="200" Grid.Column="1" Margin="5" Style="{StaticResource CmpStandarDataGrid}" 
+                             ItemsSource="{Binding ListECMP_Compra}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Razón Social Proveedor" Binding="{Binding ObjEMNF_ClienteProveedor.RazonSocial}" IsReadOnly="True" MinWidth="200"  Width="200"/>
+                <DataGridTextColumn Header="Moneda" Binding="{Binding ObjESGC_Moneda.Descripcion}" Visibility="{Binding DataContext.IsVisibleColumnMoneda, Source={StaticResource ProxyElement}, Converter={StaticResource ConvertToVisibilityColumns}}" IsReadOnly="True" MinWidth="100"  Width="100"/>
+                <DataGridTextColumn Header="Documento" Binding="{Binding DescDocumento}" IsReadOnly="True" MinWidth="100"  Width="100"/>
+                <DataGridTextColumn Header="Serie" Binding="{Binding Serie}" IsReadOnly="True" MinWidth="60"  Width="60"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True" MinWidth="100"  Width="100"/>
+                <DataGridTemplateColumn Header="Total" MinWidth="100" Width="100" IsReadOnly="True"
+										Visibility="{Binding DataContext.IsVisibleColumnTotal, Source={StaticResource ProxyElement}, Converter={StaticResource ConvertToVisibilityColumns}}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Total, StringFormat='###,###,##0.#0'}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Saldo" MinWidth="93" Width="93" IsReadOnly="True"
+                                        Visibility="{Binding DataContext.IsVisibleColumnSaldo, Source={StaticResource ProxyElement}, Converter={StaticResource ConvertToVisibilityColumns}}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=SaldoCompra,StringFormat='#,###,###,##0.#0'}"  TextAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="93" Width="93" IsReadOnly="True"
+                                        Visibility="{Binding DataContext.IsVisibleColumnDetraccion, Source={StaticResource ProxyElement}, Converter={StaticResource ConvertToVisibilityColumns}}">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataContext.PropertyHeaderDetraccion, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:Flyout}, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=DetraccionCompra,StringFormat='#,###,###,##0.#0'}"  TextAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Inc. Detracción" MinWidth="30" Width="Auto"
+                                        Visibility="{Binding DataContext.VisibleChkDetraccion, Source={StaticResource ProxyElement}}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IncluyeDetraccionCompra, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                      Command="{Binding DataContext.ICalcular, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:Flyout}, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </CmpControl:DataGrid>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="{Binding ColumnSpanBuscador}">
+                <TextBlock Text="Filtrar por [Proveedor | Moneda | Serie | Número]" FontSize="10" Margin="5,0,5,0"/>
+                
+                <TextBox x:Name="txtFiltrar" Margin="5,0,5,5" 
+                         Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}" CharacterCasing="Upper"
+                         CmpTextBox:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding FiltrarDocumento, UpdateSourceTrigger=PropertyChanged}"
+                         ToolTip="Filtrar por [Proveedor | Moneda | Serie | Número]">
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Visibility="{Binding VisibilityMonto}">
+                <TextBlock Text="Ingrese Monto a Pagar:" FontSize="10" Margin="5,0,5,0"/>
+                <TextBox x:Name="txtMonto" Margin="5,0,5,5" 
+                         CmpTextBox:CmpMaskBehaviorMVVM.Mask="Decimal"
+                         CmpTextBox:CmpMaskBehaviorMVVM.MaximumDecimalNumber="2"
+                         Text="{Binding Monto, UpdateSourceTrigger=PropertyChanged}"
+                         TextAlignment="Right"
+                         ToolTip="">
+                </TextBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <CmpControl:DataGrid x:Name="dtgCompraSeleccion"
+                             SelectedItem="{Binding SelectedItemSeleccion}"
+                             Grid.Row="2" MinHeight="100" MaxHeight="100"
+                             Grid.Column="1" Margin="5"
+                             Style="{StaticResource CmpStandarDataGrid}" 
+                             Visibility="{Binding VisibilityCompraSeleccion}"
+                             ItemsSource="{Binding ListECMP_CompraSeleccion}" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn MinWidth="20" Width="20" MaxWidth="20" Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource CmpDataViewButtonEliminar03}" Height="15" Width="15" ToolTip="Eliminar" Command="{Binding DataContext.IEliminarRef, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:Flyout}, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Razón Social Proveedor" Binding="{Binding ObjEMNF_ClienteProveedor.RazonSocial}" IsReadOnly="True" MinWidth="200"  Width="*"/>
+                <DataGridTextColumn Header="Moneda" Binding="{Binding ObjESGC_Moneda.Descripcion}" IsReadOnly="True" MinWidth="80"  Width="*"/>
+                <DataGridTextColumn Header="Documento" Binding="{Binding DescDocumento}" IsReadOnly="True" MinWidth="90"  Width="*"/>
+                <DataGridTextColumn Header="Serie" Binding="{Binding Serie}" IsReadOnly="True" MinWidth="50"  Width="*"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True" MinWidth="90"  Width="*"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat='###,###,##0.#0'}" IsReadOnly="True" MinWidth="100"  Width="*"/>
+            </DataGrid.Columns>
+        </CmpControl:DataGrid>
+        
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5,0" FontSize="13" Text="{Binding Items.Count,ElementName=dtgCompra}"  />
+            <TextBlock Grid.Column="1" FontSize="13" Text="Registros" Margin="0,0,20,10"/>
+            <StackPanel HorizontalAlignment="Right" Grid.Column="2" Orientation="Horizontal" Visibility="{Binding VisibilitySumaSeleccionados}">
+                <TextBlock Margin="5,0" FontSize="13" Text="Suma Seleccionados: " VerticalAlignment="Center"/>
+                <TextBox Margin="5,0" Text="{Binding SumaSeleccionados, UpdateSourceTrigger=PropertyChanged, IsAsync=True, StringFormat='###,###,##0.#0'}" TextAlignment="Right" Width="150" IsReadOnly="True"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.Column="0" Margin="5" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CmpButton:CmpButtonTitleTeclaSeleccionar Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5" IsCommand="{Binding ISelectedItem}"/>
+            <CmpButton:CmpButtonTitleTeclaVolver Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,0,5" IsCommand="{Binding IVolver}"/>
+        </Grid>
+        
+    </Grid>
+
+</controls:Flyout>

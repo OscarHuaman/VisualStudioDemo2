@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="CMP.Presentation.OrdenCompra.PCMP_ListadoOrdenCompra"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:CmpButton="clr-namespace:ComputerSystems.WPF.Acciones.Controles.Buttons;assembly=ComputerSystems.WPF"
+             xmlns:TitleModule="clr-namespace:ComputerSystems.WPF.Acciones.TitleModule;assembly=ComputerSystems.WPF"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:ValueConverter="clr-namespace:CMP.Presentation.OrdenCompra"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ValueConverter:OrdenCompraPendiente x:Key="OrdenCompraPendiente" />
+            <ValueConverter:OrdenCompraAprobado x:Key="OrdenCompraAprobado" />
+            <ValueConverter:OrdenCompraAtendido x:Key="OrdenCompraAtendido" />
+            <ValueConverter:OrdenCompraAnulado x:Key="OrdenCompraAnulado" />
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TitleModule:MyTitleModule Grid.Row="0" Grid.Column="0" Margin="5" Grid.ColumnSpan="2"  NameModule="Compra" NameWindow="Administrar Orden Compra" Logo="/CMP.Presentation;component/Source/ima.png" />
+
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel  Grid.Row="2" Grid.Column="0">
+                <Grid x:Name="GridFiltrarFecha">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel  Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="Fecha desde" Margin="5,0,5,0" FontSize="10"/>
+                        <DatePicker x:Name="dtpFechaDesde" Margin="5,0,5,5"
+                            Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                            DisplayDateEnd="{x:Static sys:DateTime.Now}"
+                            ToolTip="Seleccione Fecha Desde"  />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0"  Grid.Column="1">
+                        <TextBlock Text="Fecha hasta" Margin="5,0,5,0" FontSize="10"/>
+                        <DatePicker x:Name="dtpFechaHasta" Margin="5,0,5,5"
+                            Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                            DisplayDateEnd="{x:Static sys:DateTime.Now}"
+                            DisplayDateStart="{Binding Path=SelectedDate, ElementName=dtpFechaDesde}"
+                            ToolTip="Seleccione Fecha Hasta"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="GridFiltrarDescripcion">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="lblFiltrar" Grid.Row="0" Grid.Column="0" Text="" Margin="5,0,5,0" FontSize="10"/>
+                    <TextBox x:Name="txtFiltrar" Grid.Row="1" Grid.Column="0" Margin="5,0,5,5"
+                             Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                             Controls:TextBoxHelper.ClearTextButton="True"  CharacterCasing="Upper"
+                             ToolTip="Buscar por opción seleccionado"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <TextBlock Text="Opción" Margin="5,0,5,0" FontSize="10"/>
+                <ComboBox x:Name="cbxOpcion"  Margin="5,0,5,5" VerticalAlignment="Center"
+                          IsEditable="True" MaxDropDownHeight="125"
+                          Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                      ToolTip="Seleccione Opcion" >
+                    <ComboBoxItem>Fecha</ComboBoxItem>
+                    <ComboBoxItem>Proveedor</ComboBoxItem>
+                    <ComboBoxItem>Moneda</ComboBoxItem>
+                    <ComboBoxItem>Documento</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            
+        </Grid>
+        
+        <Grid Grid.Column="0" Grid.Row="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0">
+                <CmpButton:CmpButtonTitleTeclaNuevo x:Name="btnNuevo" Margin="5" IsEnabled="False" IsClicked="btnNuevoIsClicked"/>
+                <CmpButton:CmpButtonTitleTeclaAprobar x:Name="btnAprobar" Margin="5" IsClicked="btnAprobarIsClicked"/>
+                <CmpButton:CmpButtonTitleTeclaExportarExcel x:Name="btnExportar" Margin="5" IsClicked="btnExportarIsClicked"/>
+                <CmpButton:CmpButtonTitleTeclaSalir x:Name="btnSalir" Margin="5" IsClicked="btnSalirIsClicked"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0">
+                <CmpButton:CmpButtonTitleTeclaEditar x:Name="btnEditar" Margin="5" IsEnabled="False" IsClicked="btnEditarIsClicked"/>
+                <CmpButton:CmpButtonTitleTeclaAnular x:Name="btnAnular" Margin="5" IsClicked="btnAnularIsClicked"/>
+                <CmpButton:CmpButtonTitleTeclaVizualizar x:Name="btnVisualizar" Margin="5" IsClicked="btnVisualizarIsClicked"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="dtgOrdenCompra" Grid.Row="3" MinHeight="200" Margin="5" Grid.Column="1" Style="{StaticResource CmpStandarDataGrid}" >
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="Selección" Width="75" MinWidth="75" Visibility="Collapsed"
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}" />
+                <DataGridTextColumn Header="Sucursal" Binding="{Binding ObjESGC_EmpresaSucursal.Sucursal}" IsReadOnly="True" MinWidth="150"  Width="Auto"/>
+                <DataGridTextColumn Header="Almacen destino" Binding="{Binding ObjEALM_Almacen.Almacen}" IsReadOnly="True" MinWidth="120"  Width="Auto"/>
+                <DataGridTextColumn Header="Moneda" Binding="{Binding ObjESGC_Moneda.Descripcion}" IsReadOnly="True" MinWidth="80"  Width="Auto"/>
+                <DataGridTextColumn Header="N° Documento" Binding="{Binding DocumenSerie}" IsReadOnly="True" MinWidth="110"  Width="110"/>
+                <DataGridTextColumn Header="Razón social proveedor" Binding="{Binding ObjEMNF_ClienteProveedor.RazonSocial}" IsReadOnly="True" MinWidth="150"  Width="Auto"/>
+                <DataGridTextColumn Header="Fecha Orden" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}" IsReadOnly="True" MinWidth="90"  Width="90"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding ObjESGC_Estado.Estado}" IsReadOnly="True" MinWidth="100"  Width="100"/>
+                <DataGridTextColumn Header="Fecha Entrega" Binding="{Binding FechaEntrega, StringFormat=dd/MM/yyyy}" IsReadOnly="True" MinWidth="95"  Width="95"/>
+                <DataGridTextColumn Header="Dias Retraso" Binding="{Binding DiasRetraso}" IsReadOnly="True" MinWidth="85"  Width="85"/>
+                <DataGridTextColumn Header="Provisionado" Binding="{Binding ProvicionadoText}" IsReadOnly="True" MinWidth="115"  Width="115"/>
+            </DataGrid.Columns>
+            <!--<DataGrid.RowStyle>
+                <Style BasedOn="{StaticResource MetroDataGridRow}" TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraPendiente}}" Value="True">
+                            <Setter Property="Background" Value="#FFFF33" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAprobado}}" Value="True">
+                            <Setter Property="Background" Value="#99FF33" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAtendido}}" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAnulado}}" Value="True">
+                            <Setter Property="Background" Value="Coral" />
+                        </DataTrigger>
+            
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraPendiente}}" Value="True" />
+                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#FFFF99" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAprobado}}" Value="True" />
+                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#CCFF99" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAtendido}}" Value="True" />
+                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="White" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ObjESGC_Estado.CodEstado, Mode=OneWay, Converter={StaticResource OrdenCompraAnulado}}" Value="True" />
+                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#ff9c8a" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>-->
+        </DataGrid>
+        
+        <TextBlock x:Name="lblCountItems" Grid.Row="4" Grid.Column="1" Margin="5" Text="0 Registros" />
+    </Grid> 
+</UserControl>

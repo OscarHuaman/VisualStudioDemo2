@@ -1,0 +1,6 @@
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\bin\Debug\CMP.Useful.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\bin\Debug\CMP.Useful.pdb
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\bin\Debug\SGC.Empresarial.Useful.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\bin\Debug\SGC.Empresarial.Entity.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\obj\Debug\CMP.Useful.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Useful\obj\Debug\CMP.Useful.pdb

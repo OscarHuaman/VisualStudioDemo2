@@ -1,0 +1,4 @@
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\bin\CMP.Business.pdb
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Business\obj\Debug\CMP.Business.csprojResolveAssemblyReference.cache
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Business\obj\Debug\CMP.Business.dll
+C:\Users\DESASYSTEMS-04\Desktop\Compra (V 1.0.0.0)\CMP.Business\obj\Debug\CMP.Business.pdb

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7441F7ED-EB7D-477B-8232-A2DF858152DD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMP.Presentation</RootNamespace>
+    <AssemblyName>CMP.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ALM.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ALM.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="ALM.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ALM.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="ALM.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ALM.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="ComputerSystems" />
+    <Reference Include="ComputerSystems.WPF, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ComputerSystems.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MahApps.Metro.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\ReportViewer\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="MNF.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="MNF.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MNF.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Business, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Entity, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Method, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Method.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Presentation, Version=3.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Useful, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Compra\Flyouts\PCMP_BuscarAnticipo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Compra\PCMP_Compra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Compra\PCMP_ListadoCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenCompra\PCMP_AprobacionOrdenCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenCompra\PCMP_ViewOrdenCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\PCMP_AprobacionOrdenServicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TempArticuloListaPrecio\PCMP_TempArticuloListaPrecio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\Flyouts\PCMP_BuscarOrdenServicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\PCMP_ViewOrdenServicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\PCMP_ListadoOrdenServicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\PCMP_OrdenServicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenServicio\Flyouts\Obervaciones.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Compra\Flyouts\PCMP_BuscarAnticipo.xaml.cs">
+      <DependentUpon>PCMP_BuscarAnticipo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compra\PCMP_Compra.xaml.cs">
+      <DependentUpon>PCMP_Compra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compra\PCMP_ListadoCompra.xaml.cs">
+      <DependentUpon>PCMP_ListadoCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Method\MDatePicker.cs" />
+    <Compile Include="OrdenCompra\PCMP_AprobacionOrdenCompra.xaml.cs">
+      <DependentUpon>PCMP_AprobacionOrdenCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenCompra\PCMP_ViewOrdenCompra.xaml.cs">
+      <DependentUpon>PCMP_ViewOrdenCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenCompra\IValueConverters.cs" />
+    <Compile Include="OrdenServicio\PCMP_AprobacionOrdenServicio.xaml.cs">
+      <DependentUpon>PCMP_AprobacionOrdenServicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TempArticuloListaPrecio\PCMP_TempArticuloListaPrecio.xaml.cs">
+      <DependentUpon>PCMP_TempArticuloListaPrecio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenServicio\Flyouts\PCMP_BuscarOrdenServicio.xaml.cs">
+      <DependentUpon>PCMP_BuscarOrdenServicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenServicio\PCMP_ViewOrdenServicio.xaml.cs">
+      <DependentUpon>PCMP_ViewOrdenServicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenServicio\IValueConverters.cs" />
+    <Compile Include="OrdenServicio\PCMP_ListadoOrdenServicio.xaml.cs">
+      <DependentUpon>PCMP_ListadoOrdenServicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenServicio\PCMP_OrdenServicio.xaml.cs">
+      <DependentUpon>PCMP_OrdenServicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenServicio\Flyouts\Obervaciones.xaml.cs">
+      <DependentUpon>Obervaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenCompra\PCMP_ListadoOrdenCompra.xaml.cs">
+      <DependentUpon>PCMP_ListadoOrdenCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenCompra\PCMP_OrdenCompra.xaml.cs">
+      <DependentUpon>PCMP_OrdenCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenCompra\Flyouts\PCMP_BuscarOrdenCompra.xaml.cs">
+      <DependentUpon>PCMP_BuscarOrdenCompra.xaml</DependentUpon>
+    </Compile>
+    <Page Include="OrdenCompra\PCMP_ListadoOrdenCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenCompra\PCMP_OrdenCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrdenCompra\Flyouts\PCMP_BuscarOrdenCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\ima.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMP.Business\CMP.Business.csproj">
+      <Project>{cccd4610-ae23-4c7c-b758-7b6a259931e6}</Project>
+      <Name>CMP.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Entity\CMP.Entity.csproj">
+      <Project>{3d17f275-565c-4e3f-9f6c-d9f07b163eac}</Project>
+      <Name>CMP.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Report\CMP.Reports.csproj">
+      <Project>{3374cc15-9d35-4642-a5fa-078ecb1e03f3}</Project>
+      <Name>CMP.Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Useful\CMP.Useful.csproj">
+      <Project>{c97db881-8e8b-4f19-9569-b5a001d2b172}</Project>
+      <Name>CMP.Useful</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.ViewModels\CMP.ViewModels.csproj">
+      <Project>{b8be426e-5628-4955-ab8f-450155957ca8}</Project>
+      <Name>CMP.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Add.png" />
+    <Resource Include="Source\back.png" />
+    <Resource Include="Source\back1.png" />
+    <Resource Include="Source\Close.png" />
+    <Resource Include="Source\contacts.png" />
+    <Resource Include="Source\Data.png" />
+    <Resource Include="Source\Delete.png" />
+    <Resource Include="Source\print.png" />
+    <Resource Include="Source\provider.png" />
+    <Resource Include="Source\Remove.png" />
+    <Resource Include="Source\save.png" />
+    <Resource Include="Source\Search.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

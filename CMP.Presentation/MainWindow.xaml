@@ -1,0 +1,20 @@
+﻿<Controls:MetroWindow x:Class="CMP.Presentation.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      Title="MainWindow" Height="450" Width="525">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button Click="Button_Click_1" Content="Orden Compra"/>
+        <Button Click="Button_Click_4" Content="Listado Compra"/>
+        <Button Click="Button_Click_2" Content="Servicio"/>
+        <Button Click="Button_Click_3" Content="Listado Servicio"/>
+        <Button Click="Button_Click_5" Content="Compra"/>
+        <Button Click="Button_Click_12" Content="Reporte List Precio"/>
+        <Button Click="Button_Click_6" Content="Nota Credito Debito"/>
+        <Button Click="Button_Click_7" Content="Stock Mínimo"/>
+        <Button Click="Button_Click_8" Content="List. Documentos "/>
+        <Button Click="Button_Click_9" Content="List. Honorario"/>
+        <Button Click="Button_Click_10" Content="List. Gasto Interno"/>
+        <Button Click="Button_Click_11" Content="Cuentas por Pagar"/>
+    </StackPanel>
+</Controls:MetroWindow>

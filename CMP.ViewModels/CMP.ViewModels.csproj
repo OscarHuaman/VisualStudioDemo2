@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8BE426E-5628-4955-AB8F-450155957CA8}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMP.ViewModels</RootNamespace>
+    <AssemblyName>CMP.ViewModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ALM.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ALM.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="ALM.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ALM.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="CJB.Useful, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\CJB.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="CJB.ViewModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\CJB.ViewModels.dll</HintPath>
+    </Reference>
+    <Reference Include="ComputerSystems" />
+    <Reference Include="ComputerSystems.WPF, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\ComputerSystems.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Miler\Documents\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.Resources">
+      <HintPath>C:\Users\Miler\Documents\MahApps.Metro.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="MNF.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="MNF.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MNF.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MNF.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Business, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CMP\Compra (V 1.0.0.0)\CMP.Solution\bin\SGC.Empresarial.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Entity, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CMP\Compra (V 1.0.0.0)\CMP.Solution\bin\SGC.Empresarial.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Method">
+      <HintPath>..\..\..\CMP\Compra (V 1.0.0.0)\CMP.Solution\bin\SGC.Empresarial.Method.dll</HintPath>
+    </Reference>
+    <Reference Include="SGC.Empresarial.Useful, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SGC.Empresarial.Useful.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\bin\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="VTA.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\VTA.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App4.xaml.cs">
+      <DependentUpon>App4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compra\Flyout\PCMP_BuscarCompra.xaml.cs">
+      <DependentUpon>PCMP_BuscarCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compra\VM\VCMP_BuscarCompra.cs" />
+    <Compile Include="Converts\ConvertCreditState.cs" />
+    <Compile Include="Converts\ConvertDebitState.cs" />
+    <Compile Include="Converts\ConvertToEnablebFromLength.cs" />
+    <Compile Include="Converts\ConvertToVisibilityColumns.cs" />
+    <Compile Include="Converts\ConvertToVIsibilityFromFalse.cs" />
+    <Compile Include="Converts\ConvertToVisibilityFromTrue.cs" />
+    <Compile Include="Converts\ConvertToVisibleFromType.cs" />
+    <Compile Include="CuentasPorPagar\Pages\PCMP_CuentasPorPagar.xaml.cs">
+      <DependentUpon>PCMP_CuentasPorPagar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CuentasPorPagar\Pages\PCMP_ListadoReciboGastosInternos.xaml.cs">
+      <DependentUpon>PCMP_ListadoReciboGastosInternos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CuentasPorPagar\VM\VCMP_CuentasPorPagar.cs" />
+    <Compile Include="CuentasPorPagar\VM\VCMP_ListadoReciboGastosInternos.cs" />
+    <Compile Include="Method\MDatePicker.cs" />
+    <Compile Include="NotaCreditoDebito\Pages\PCMP_ListadoNotaCreditoDebito.xaml.cs">
+      <DependentUpon>PCMP_ListadoNotaCreditoDebito.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotaCreditoDebito\Pages\PCMP_NotaCreditoDebito.xaml.cs">
+      <DependentUpon>PCMP_NotaCreditoDebito.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotaCreditoDebito\VM\VCMP_ListarNotaCreditoDebito.cs" />
+    <Compile Include="NotaCreditoDebito\VM\VCMP_NotaCreditoDebito.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReporteGeneralDocumento\Page\PCMP_ListadoDocumento.xaml.cs">
+      <DependentUpon>PCMP_ListadoDocumento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteGeneralDocumento\VM\VCMP_ListadoDocumento.cs" />
+    <Compile Include="ReporteGeneralHonorario\Page\PCMP_ListadoHonorario.xaml.cs">
+      <DependentUpon>PCMP_ListadoHonorario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteGeneralHonorario\VM\VCMP_ListadoHonorario.cs" />
+    <Compile Include="ReporteStockMinimo\Page\PCMP_ListadoStockMinimo.xaml.cs">
+      <DependentUpon>PCMP_ListadoStockMinimo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteStockMinimo\VM\VCMP_ListadoStockMinimo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_AccountsByToPay.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_BranchOffice.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_Compra.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_CompraDetalle.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DataMartixReport.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DataTitleReport.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_Detail.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DetailAccounts.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_DocumentFromNote.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_FilterPropertyData.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_Motive.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_NoteCreditDebit.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenCompra.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenCompraDetalle.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenServicio.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_OrdenServicioDetalle.datasource" />
+    <None Include="Properties\DataSources\CMP.Entity.ECMP_Provider.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMP.Business\CMP.Business.csproj">
+      <Project>{cccd4610-ae23-4c7c-b758-7b6a259931e6}</Project>
+      <Name>CMP.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Entity\CMP.Entity.csproj">
+      <Project>{3d17f275-565c-4e3f-9f6c-d9f07b163eac}</Project>
+      <Name>CMP.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Report\CMP.Reports.csproj">
+      <Project>{3374cc15-9d35-4642-a5fa-078ecb1e03f3}</Project>
+      <Name>CMP.Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMP.Useful\CMP.Useful.csproj">
+      <Project>{c97db881-8e8b-4f19-9569-b5a001d2b172}</Project>
+      <Name>CMP.Useful</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ReporteStockMinimo\Page\PCMP_ListadoStockMinimo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="App4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Compra\Flyout\PCMP_BuscarCompra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CuentasPorPagar\Pages\PCMP_CuentasPorPagar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CuentasPorPagar\Pages\PCMP_ListadoReciboGastosInternos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotaCreditoDebito\Pages\PCMP_ListadoNotaCreditoDebito.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotaCreditoDebito\Pages\PCMP_NotaCreditoDebito.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReporteGeneralDocumento\Page\PCMP_ListadoDocumento.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReporteGeneralHonorario\Page\PCMP_ListadoHonorario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\ima.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\contacts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Remove.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
