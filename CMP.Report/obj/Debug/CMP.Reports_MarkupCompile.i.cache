@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\DESASYSTEMS-04\Documents\GitHub\VisualStudioDemo2\CMP.Report\obj\Debug\
+C:\Users\DESASYSTEMS-04\Source\Repos\VisualStudioDemo22\CMP.Report\obj\Debug\
 CMP.Reports
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 3-1945052593
 
 11-1927178386
-251463513413
+251055977603
 SendEmail.xaml;TempArticuloListaPrecio\ViewReportData.xaml;MainRerport.xaml;
 
 False
