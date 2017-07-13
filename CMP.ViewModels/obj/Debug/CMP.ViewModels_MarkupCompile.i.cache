@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\DESASYSTEMS-04\Source\Repos\VisualStudioDemo22\CMP.ViewModels\obj\Debug\
+C:\Users\SOPORTE-01\Documents\Git\DemoVisual\CMP.ViewModels\obj\Debug\
 CMP.ViewModels
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 8327377098
 
-33-494689588
-371862581595
+32877471869
+37943315220
 ReporteStockMinimo\Page\PCMP_ListadoStockMinimo.xaml;Compra\Flyout\PCMP_BuscarCompra.xaml;CuentasPorPagar\Pages\PCMP_CuentasPorPagar.xaml;CuentasPorPagar\Pages\PCMP_ListadoReciboGastosInternos.xaml;NotaCreditoDebito\Pages\PCMP_ListadoNotaCreditoDebito.xaml;NotaCreditoDebito\Pages\PCMP_NotaCreditoDebito.xaml;ReporteGeneralDocumento\Page\PCMP_ListadoDocumento.xaml;ReporteGeneralHonorario\Page\PCMP_ListadoHonorario.xaml;
 
 False

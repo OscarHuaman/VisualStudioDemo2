@@ -137,7 +137,6 @@
     <Compile Include="CuentasPorPagar\VM\VCMP_CuentasPorPagar.cs" />
     <Compile Include="CuentasPorPagar\VM\VCMP_ListadoReciboGastosInternos.cs" />
     <Compile Include="Method\MDatePicker.cs" />
-    <Compile Include="NewFolder1\Class1.cs" />
     <Compile Include="NotaCreditoDebito\Pages\PCMP_ListadoNotaCreditoDebito.xaml.cs">
       <DependentUpon>PCMP_ListadoNotaCreditoDebito.xaml</DependentUpon>
     </Compile>
