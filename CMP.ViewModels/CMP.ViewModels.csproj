@@ -137,6 +137,7 @@
     <Compile Include="CuentasPorPagar\VM\VCMP_CuentasPorPagar.cs" />
     <Compile Include="CuentasPorPagar\VM\VCMP_ListadoReciboGastosInternos.cs" />
     <Compile Include="Method\MDatePicker.cs" />
+    <Compile Include="NewFolder1\Class1.cs" />
     <Compile Include="NotaCreditoDebito\Pages\PCMP_ListadoNotaCreditoDebito.xaml.cs">
       <DependentUpon>PCMP_ListadoNotaCreditoDebito.xaml</DependentUpon>
     </Compile>
@@ -298,9 +299,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
